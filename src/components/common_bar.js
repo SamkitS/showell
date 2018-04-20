@@ -1,20 +1,25 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
-import {grey50, grey900,} from 'material-ui/styles/colors';
-// import Homepage from './Homepage';
-import { withRouter } from 'react-router';
-import '../style/nav.css';
-// import FontIcon from 'material-ui/FontIcon';
-
-
+import styled from 'styled-components';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import AppBar from 'material-ui/AppBar';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
-
-
-
-
+import {grey50, grey900,} from 'material-ui/styles/colors';
 import {Link} from 'react-router-dom';
+import { withRouter } from 'react-router';
+
+const Head = styled.div`
+display: block;
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 100;
+`;
+
+
+
 
 const iconStyles = {
     width: '36px',
@@ -49,7 +54,8 @@ class CommonBar extends React.Component {
     
     render(){
     return (
-    <div className= 'head'>
+      <div>
+    <Head>
      
     <AppBar
       title="Home-Pro"
@@ -83,6 +89,7 @@ class CommonBar extends React.Component {
           <MenuItem  onClick={this.handleClose}><Link to= '/aboutus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}> About Us</Link></MenuItem>
           <MenuItem style = {{marginBottom: '90%'}}  onClick={this.handleClose}><Link to= '/blog' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>Blog</Link></MenuItem>
         </Drawer>
+    </Head>
     </div>
   );
 }
