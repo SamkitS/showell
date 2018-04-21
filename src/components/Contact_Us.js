@@ -35,7 +35,7 @@ const Mapnew = styled.div`
 }
 @media only screen and (max-width: 800px) {
     z-index = 50;
-    height: 25vh;
+    height: 15vh;
     width: 70vw;
     position: absolute;
     padding-top: 15vh;
@@ -46,7 +46,7 @@ const Mapnew = styled.div`
 `;
 
 const ContactFooter = styled.div` 
-height: 80vh;
+height: 110vh;
 width: 100%;
 background: #360033;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #0b8793, #360033);  /* Chrome 10-25, Safari 5.1-6 */
@@ -155,6 +155,30 @@ var labelStyle = {
     position: 'relative'
 }
 
+const FooterText = styled.h3`
+@media only screen and (min-width: 750px) {
+    position: absolute;
+    text-align: center;  
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5vh;
+    color: white;
+    padding-top: 75vh;
+    padding-left: 38vw;
+
+}
+@media only screen and (max-width: 800px) {
+    position: absolute;
+    text-align: center;  
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5vh;
+    color: white;
+    padding-top: 75vh;
+    padding-left: 12vw;
+}
+
+`;
 
 
 class Contact extends React.Component {
@@ -243,17 +267,37 @@ class Contact extends React.Component {
             <ContactFooter>
                 <Mapnew>
                 <MapWithControlledZoom
-        containerElement = {
-            <div style = {{height: "100%", }} />
-        }
-        mapElement = {
-            <div style = {{height: "100%"}} />
+                containerElement = {
+                    <div style = {{height: "100%", }} />
+                 }
+                mapElement = {
+                    <div style = {{height: "100%"}} />
 
-        }
-        markers = {this.state.markers}
+                 }
+                markers = {this.state.markers}
 
-        />
+                />
                 </ Mapnew>
+                <br />
+                <br />
+
+                <FooterText>
+                Office Address : 
+                <br />
+                26/ Abcd, Govt Industrial Estate, 
+                <br />
+                Near Hindustan Naka, Charkop, 
+                <br />
+                Kandivali West, Mumbai - 400067
+                <br />
+                <br />
+                Email id: 
+                <br />
+                <br />
+                business@homeproindia.com
+                 </FooterText>
+
+            
                 </ContactFooter>
         </ Wrapper>
         );
