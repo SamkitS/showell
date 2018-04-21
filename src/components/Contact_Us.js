@@ -6,12 +6,53 @@ import Contact_Banner from '../images/contact_banner.jpg';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// import { GoogleApiWrapper } from 'google-maps-react';
+import MapWithControlledZoom from './map';
+injectTapEventPlugin();
+
 
 const Wrapper = styled.div`
 html, body {
     height: 100%;
     margin: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-width: 100%;
 }
+`;
+
+const Mapnew = styled.div`
+@media only screen and (min-width: 800px) {
+    z-index = 50;
+    height: 40vh;
+    width: 60vw;
+    position: absolute;
+    padding-top: 15vh;
+    padding-left: 20vw;
+    margin: 0;
+
+}
+@media only screen and (max-width: 800px) {
+    z-index = 50;
+    height: 25vh;
+    width: 70vw;
+    position: absolute;
+    padding-top: 15vh;
+    padding-left: 13vw;
+    margin: 0;
+}
+
+`;
+
+const ContactFooter = styled.div` 
+height: 80vh;
+width: 100%;
+background: #360033;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #0b8793, #360033);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #0b8793, #360033); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+position: relative;
+z-index: 0;
 `;
 
 const Banner = styled.section`
@@ -21,13 +62,14 @@ const Banner = styled.section`
     background-attachment: scroll;
     background-size: 100%;
     height: 25vh;
-    width: 110%;
+    width: 100%;
     margin:0;
     padding:0;
-    right: 10px;
+    // right: 10px;
     position: relative;
     top: 51px;
     z-index: -1;
+    display: block;
     
 
     >h1 {
@@ -55,9 +97,10 @@ const Banner = styled.section`
     width: 100%;
     margin:0;
     padding:0;
-    right: 10px;
+    // right: 10px;
     position: relative;
     top: 51px;
+    display: block;
     
     
 
@@ -115,28 +158,47 @@ var labelStyle = {
 
 
 class Contact extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            markers: [{
+                position : {
+                    lat:19.204729,
+                    lng: 72.836778,
+                }
+            }]
+        }
+    }
+
+
     render () {
         return (
         <Wrapper >
-            <MuiThemeProvider muiTheme={getMuiTheme()}>
+            
             <header>
-            
+
+            <MuiThemeProvider muiTheme={getMuiTheme()}>
             <CommonBar />
-            
+            </ MuiThemeProvider>
             </header>
             <Banner>
              <h1> Contact Us </h1>
             </Banner>
-            <PleaseFill> Let's do business together! Send us a Message.   </PleaseFill>
-            <Fields>
+            <PleaseFill> Lets do business together! Send us a Message.
             
+            </PleaseFill>
+            <Fields>
+            <MuiThemeProvider muiTheme={getMuiTheme()}>
             <TextField
             floatingLabelText="Please enter your full name"
             hintText = "Full Name"
             fullWidth={true}
             type = "text"
              />
+            </ MuiThemeProvider>
              <br/>
+
+             <MuiThemeProvider muiTheme={getMuiTheme()}>
              <TextField
             floatingLabelText="Please enter your contact number"
             hintText = "Number"
@@ -144,7 +206,9 @@ class Contact extends React.Component {
             type = "number"
             
              />
+             </ MuiThemeProvider>
              <br/>
+             <MuiThemeProvider muiTheme={getMuiTheme()}>
              <TextField
             floatingLabelText="Please enter your email id"
             hintText = "Email Id"
@@ -152,7 +216,9 @@ class Contact extends React.Component {
             
             
              />
+             </ MuiThemeProvider>
              <br/>
+             <MuiThemeProvider muiTheme={getMuiTheme()}>
              <TextField
             floatingLabelText="Enter your message"
             hintText = "Message Body"
@@ -161,19 +227,41 @@ class Contact extends React.Component {
             fullWidth={true}
             
              />
+             </ MuiThemeProvider>
              <br/>
              <br/>
              <br/>
              <Button>
-            <RaisedButton label="Send" primary={true} style = {{ width: '16rem', height: '3.25rem'}} labelStyle = {labelStyle} />
+             <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <RaisedButton label="Send" primary={true} style = {{ width: '16rem', height: '3.25rem',}} labelStyle = {labelStyle} />
+            </ MuiThemeProvider>
             </Button>
             
             
             </ Fields>
-            </ MuiThemeProvider>
+            
+            <ContactFooter>
+                <Mapnew>
+                <MapWithControlledZoom
+        containerElement = {
+            <div style = {{height: "100%", }} />
+        }
+        mapElement = {
+            <div style = {{height: "100%"}} />
+
+        }
+        markers = {this.state.markers}
+
+        />
+                </ Mapnew>
+                </ContactFooter>
         </ Wrapper>
         );
     }
 }
 
 export default Contact;
+
+
+
+//AIzaSyCZIIwaKOFOp2X86qHwoFFJoAtpy0DFuh4
