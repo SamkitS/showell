@@ -22,12 +22,12 @@ import registerServiceWorker from './registerServiceWorker';
     <Switch>
     <Route path="/list/:id" component = {Product} />
     <Route exact path="/" component = {Homepage} />
-    <Route path="/aboutus" component = {About}/>
-    <Route path="/blog" component = {Blog}/>
-    <Route path="/contactus" component = {Contact} />
-    <Route path="/list" component = {List} />
-    <Route path="/adminlogin" component = {Admin}/>
-    <Route path="/adminlogin/manage" component = {Manage}/>
+    <Route  path="/aboutus" component = {About}/>
+    <Route  path="/blog" component = {Blog}/>
+    <Route  path="/contactus" component = {Contact} />
+    <Route  path="/list" component = {List} />
+    <Route  exact path="/adminlogin" component = {Admin}/>
+    <Route  path="/adminlogin/manage" component = {Manage}/>
     
     
     

@@ -4,6 +4,7 @@ import {grey50, grey900,} from 'material-ui/styles/colors';
 // import Homepage from './Homepage';
 // import { withRouter } from 'react-router';
 import FontIcon from 'material-ui/FontIcon';
+import MediaQuery from 'react-responsive';
 
 
 import Drawer from 'material-ui/Drawer';
@@ -14,6 +15,15 @@ import MenuItem from 'material-ui/MenuItem';
 
 
 import {Link} from 'react-router-dom';
+
+const iconStyled = {
+    fontSize: '35px',
+    cursor: 'pointer',
+    position: 'absolute',
+    zIndex: '1',
+    color: 'white',
+}
+
 
 const iconStyles = {
     fontSize: '35px',
@@ -54,6 +64,17 @@ class NavBar extends React.Component {
        
     /> */}
     
+    <MediaQuery query="(min-device-width: 1024px)"> 
+    <FontIcon
+    className="material-icons"
+    onClick={this.handleToggle}
+    hoverColor={grey50}
+    style = {iconStyled}
+    >
+    menu
+    </FontIcon>
+    </MediaQuery>
+    <MediaQuery query="(max-width: 1024px)">  
     <FontIcon
     className="material-icons"
     onClick={this.handleToggle}
@@ -62,6 +83,7 @@ class NavBar extends React.Component {
     >
     menu
     </FontIcon>
+    </MediaQuery>
 
     
     <Drawer 
@@ -70,10 +92,19 @@ class NavBar extends React.Component {
     onRequestChange={(open) => this.setState({open})}
     >
    
-          <MenuItem style = {{marginTop: '90%'}} onClick={this.handleClose}> <Link to='/list' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>Products</Link></MenuItem>
-          <MenuItem  onClick={this.handleClose}><Link to= '/contactus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}> Contact Us</Link></MenuItem>
-          <MenuItem  onClick={this.handleClose}><Link to= '/aboutus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}> About Us</Link></MenuItem>
-          <MenuItem style = {{marginBottom: '90%'}}  onClick={this.handleClose}><Link to= '/blog' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>Blog</Link></MenuItem>
+          <Link to='/list' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem style = {{marginTop: '90%'}} onClick={this.handleClose}> Products</MenuItem>
+          </Link>
+          <Link to= '/contactus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem  onClick={this.handleClose}> Contact Us</MenuItem>
+          </Link>
+          <Link to= '/aboutus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem  onClick={this.handleClose}> About Us</MenuItem>
+          </Link>
+          <Link to= '/blog' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem style = {{marginBottom: '90%'}}  onClick={this.handleClose}>Blog</MenuItem>
+          </Link>
+
         </Drawer>
     </div>
   );

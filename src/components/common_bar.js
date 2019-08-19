@@ -9,13 +9,13 @@ import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 const Head = styled.div`
+display: block;
 position: fixed;
-top: 0;
-bottom: 0;
+top:0;
 left: 0;
 right: 0;
 z-index: 100;
-width:100%;
+overflow: hidden;
 `;
 
 
@@ -83,11 +83,18 @@ class CommonBar extends React.Component {
     open={this.state.open}
     onRequestChange={(open) => this.setState({open})}
     >
-   
-          <MenuItem style = {{marginTop: '90%'}} onClick={this.handleClose}> <Link to='/list' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>Products</Link></MenuItem>
-          <MenuItem  onClick={this.handleClose}><Link to= '/contactus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}> Contact Us</Link></MenuItem>
-          <MenuItem  onClick={this.handleClose}><Link to= '/aboutus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}> About Us</Link></MenuItem>
-          <MenuItem style = {{marginBottom: '90%'}}  onClick={this.handleClose}><Link to= '/blog' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>Blog</Link></MenuItem>
+          <Link to='/list' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem style = {{marginTop: '90%'}} onClick={this.handleClose}> Products</MenuItem>
+          </Link>
+          <Link to= '/contactus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem  onClick={this.handleClose}> Contact Us</MenuItem>
+          </Link>
+          <Link to= '/aboutus' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem  onClick={this.handleClose}> About Us</MenuItem>
+          </Link>
+          <Link to= '/blog' style={{ textDecoration: 'none', color: grey900, textAlign: 'center' }}>
+          <MenuItem style = {{marginBottom: '90%'}}  onClick={this.handleClose}>Blog</MenuItem>
+          </Link>
         </Drawer>
     </Head>
     </div>

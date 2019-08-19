@@ -2,6 +2,12 @@ import React from 'react';
 import CommonBar from './common_bar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+
+
+
+
+
+
 class About extends React.Component {
     render () {
         return (
@@ -12,6 +18,10 @@ class About extends React.Component {
             </MuiThemeProvider>
             </header>
            AboutUs Page!!
+           
+         
+               
+    
         </ div>
         );
     }

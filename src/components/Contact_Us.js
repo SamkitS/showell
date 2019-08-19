@@ -1,32 +1,23 @@
 import React from 'react';
 import CommonBar from './common_bar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import styled from 'styled-components';
-import Contact_Banner from '../images/contact_banner.jpg';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import styled, {keyframes} from 'styled-components';
+import Contact_Banner from '../images/contact_banner.jpg';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-// import { GoogleApiWrapper } from 'google-maps-react';
-import MapWithControlledZoom from './map';
-injectTapEventPlugin();
+// import injectTapEventPlugin from 'react-tap-event-plugin';
+import InitialMap from './map';
+import { fadeInUp } from 'react-animations';
 
 
-const Wrapper = styled.div`
-html, body {
-    height: 100%;
-    margin: 0px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-width: 100%;
-}
-`;
+const fadeInUpAnimation = keyframes`${fadeInUp}`;
 
 const Mapnew = styled.div`
 @media only screen and (min-width: 800px) {
     z-index = 50;
-    height: 40vh;
-    width: 60vw;
+    height: 45%;
+    width: 65%;
     position: absolute;
     padding-top: 15vh;
     padding-left: 20vw;
@@ -35,11 +26,11 @@ const Mapnew = styled.div`
 }
 @media only screen and (max-width: 800px) {
     z-index = 50;
-    height: 15vh;
-    width: 70vw;
+    height: 40%;
+    width: 90%;
     position: absolute;
-    padding-top: 15vh;
-    padding-left: 13vw;
+    padding-top: 2vh;
+    padding-left: 5%;
     margin: 0;
 }
 
@@ -56,7 +47,7 @@ z-index: 0;
 `;
 
 const Banner = styled.section`
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1200px) {
     background-image: url(${Contact_Banner});
     background-repeat  : no-repeat;
     background-attachment: scroll;
@@ -75,7 +66,7 @@ const Banner = styled.section`
     >h1 {
         text-align: center;
         align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 8vw;
         color: white;
         position: absolute;
@@ -84,11 +75,12 @@ const Banner = styled.section`
         // padding-left: 10%;
         padding-top: 9vh;
         display: block;
+        animation: 5s ${fadeInUpAnimation};
     }
 
 }
 
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1200px) {
     background-image: url(${Contact_Banner});
     background-repeat  : no-repeat;
     background-attachment: scroll;
@@ -107,7 +99,7 @@ const Banner = styled.section`
     >h1 {
         text-align: center;
         align-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 10vw;
         color: white;
         position: absolute;
@@ -115,6 +107,7 @@ const Banner = styled.section`
         padding-left: 25%;
         margin: 0;
         display: block;
+        animation: 5s ${fadeInUpAnimation};
     }
 }
 
@@ -127,9 +120,10 @@ text-align: center;
 align-items: center;
 font-size: 4vw;
 color: black;
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-family: 'Roboto', sans-serif;
 marrgin:0;
 padding-top: 5vh;
+animation: 7s ${fadeInUpAnimation};
 
 `;
 
@@ -145,6 +139,7 @@ text-align: center;
 align-items: center;
 margin: 0;
 position: relative;
+boxShadow: '0 12px 20px 0 rgba(0, 0, 0, 0.2), 0 16px 50px 0 rgba(0, 0, 0, 0.19)',
 `;
 
 var labelStyle = {
@@ -160,22 +155,24 @@ const FooterText = styled.h3`
     position: absolute;
     text-align: center;  
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 2.5vh;
     color: white;
     padding-top: 75vh;
-    padding-left: 38vw;
+    padding-left: 42%;
+    animation: 3s ${fadeInUpAnimation};
 
 }
 @media only screen and (max-width: 800px) {
     position: absolute;
     text-align: center;  
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 2.5vh;
     color: white;
-    padding-top: 75vh;
+    padding-top: 40vh;
     padding-left: 12vw;
+    animation: 3s ${fadeInUpAnimation};
 }
 
 `;
@@ -197,7 +194,7 @@ class Contact extends React.Component {
 
     render () {
         return (
-        <Wrapper >
+        <div>
             
             <header>
 
@@ -212,7 +209,7 @@ class Contact extends React.Component {
             
             </PleaseFill>
             <Fields>
-            <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <MuiThemeProvider >
             <TextField
             floatingLabelText="Please enter your full name"
             hintText = "Full Name"
@@ -266,7 +263,7 @@ class Contact extends React.Component {
             
             <ContactFooter>
                 <Mapnew>
-                <MapWithControlledZoom
+                <InitialMap
                 containerElement = {
                     <div style = {{height: "100%", }} />
                  }
@@ -299,7 +296,7 @@ class Contact extends React.Component {
 
             
                 </ContactFooter>
-        </ Wrapper>
+        </ div>
         );
     }
 }
