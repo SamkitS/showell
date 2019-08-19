@@ -220,6 +220,12 @@ class Manage extends React.Component {
                 multiLine={true}
                 rows={3}
                 />
+                <br />
+               <TextField
+               hintText="Red"
+               floatingLabelText="Colour of the Product"
+               floatingLabelFixed={true}
+               /><br />
                 
                 <br />
                 <br />
